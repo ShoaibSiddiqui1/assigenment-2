@@ -1,14 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Grid Maker</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <title>Grid Maker</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* optional: helps you see cells clearly */
+    #grid { border-collapse: collapse; }
+    #grid td { width: 32px; height: 32px; border: 1px solid #000; }
+    body { font-family: system-ui, Arial, sans-serif; }
+    .toolbar { display: flex; gap: 8px; flex-wrap: wrap; margin: 12px; }
+  </style>
 </head>
 <body>
-    <!-- Menu Buttons -->
+  <div class="toolbar">
     <button id="btnAddRow">Add Row</button>
-
-    <table id="grid" border="1"></table>
 
     <button onclick="addC()">Add Col</button>
     <button onclick="removeR()">Remove Row</button>
@@ -16,30 +22,21 @@
     <button onclick="fillU()">Fill All Uncolored</button>
     <button onclick="fillAll()">Fill All</button>
     <button onclick="clearAll()">Clear</button>
+
     <select onchange="selectColor()" id="selectedColorId">
-        <option value="SELECT">SELECT</option>
-        <option value="Red">Red</option>
-        <option value="Blue">Blue</option>
-        <option value="Green">Green</option>
-        <option value="Yellow">Yellow</option>
+      <option value="SELECT">SELECT</option>
+      <option value="Red">Red</option>
+      <option value="Blue">Blue</option>
+      <option value="Green">Green</option>
+      <option value="Yellow">Yellow</option>
+      <option value="Black">Black</option>
+      <option value="White">White</option>
     </select>
-    <!-- Grid Table -->
-    <table id="grid">
-        <p>Below is an example of table (grid) template for illustration purpose. 
-            You need to remove this code (tr and td elements) in your assignment
-            so that you will have an empty table as the starting point.</p>
-        <tr>
-            <td onclick="alert('Clicked a table cell');"></td>
-            <td onclick="alert('Clicked a table cell');"></td>
-            <td onclick="alert('Clicked a table cell');"></td>
-        </tr>
-        <tr>
-            <td onclick="alert('Clicked a table cell');"></td>
-            <td onclick="alert('Clicked a table cell');"></td>
-            <td onclick="alert('Clicked a table cell');"></td>
-        </tr>
-    </table>
-    <!-- Script -->
-    <script src="script.js"></script>
+  </div>
+
+  <!-- IMPORTANT: start with ONE empty table -->
+  <table id="grid"></table>
+
+  <script src="script.js"></script>
 </body>
 </html>
