@@ -1,45 +1,53 @@
-// Declare global variables
-let numRows = 0;
-let numCols = 0;
-let colorSelected; 
+// === Story 2: Add Row (working) ===
 
-// Add a row
-function addR() {
-    alert("Clicked Add Row"); // Replace this line with your code.
+// Cache elements
+const grid = document.getElementById('grid');
+const btnAddRow = document.getElementById('btnAddRow');
+
+// Decide how many columns a new row should have.
+// If table is empty, start with 1 column; otherwise match first row.
+function getColumnCount() {
+  if (grid.rows.length === 0) return 1;
+  return Math.max(1, grid.rows[0].cells.length);
 }
 
-// Add a column
+function addRow() {
+  const colCount = getColumnCount();
+  const tr = grid.insertRow();
+  for (let c = 0; c < colCount; c++) {
+    const td = tr.insertCell();
+    td.className = 'cell'; // useful for later stories
+  }
+}
+
+// Wire the button
+btnAddRow.onclick = addRow;
+
+// === Stubs for other stories (so clicks don't error yet) ===
+let colorSelected = "SELECT";
+
 function addC() {
-    alert("Clicked Add Col"); // Replace this line with your code.
+  // TODO in Story 3
+  // alert("Add Col clicked");
 }
-
-// Remove a row
 function removeR() {
-    alert("Clicked Remove Row"); // Replace this line with your code.
+  // TODO in Story 4
+  // alert("Remove Row clicked");
 }
-
-// Remove a column
 function removeC() {
-    alert("Clicked Remove Col"); // Replace this line with your code.
+  // TODO in Story 5
+  // alert("Remove Col clicked");
 }
-
-// Set global variable for selected color
-function selectColor(){
-    colorSelected = document.getElementById("selectedColorId").value;
-    console.log(colorSelected);
+function selectColor() {
+  const sel = document.getElementById("selectedColorId");
+  colorSelected = sel ? sel.value : "SELECT";
 }
-
-// Fill all uncolored cells
-function fillU(){
-    alert("Clicked Fill All Uncolored"); // Replace this line with your code.
+function fillU() {
+  // TODO in Story 8
 }
-
-// Fill all cells
-function fillAll(){
-    alert("Clicked Fill All"); // Replace this line with your code.
+function fillAll() {
+  // TODO in Story 9
 }
-
-// Clear all cells
-function clearAll(){
-    alert("Clicked Clear All"); // Replace this line with your code.
+function clearAll() {
+  // TODO in Story 10
 }
