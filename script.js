@@ -40,7 +40,13 @@ function addC() {
 }
 
 // --- Stubs (to be implemented in later stories) ---
-function removeR() {}
+// Story 4: Remove Row
+function removeR() {
+  const table = document.getElementById('grid');
+  if (table.rows.length > 0) {
+    table.deleteRow(table.rows.length - 1); // delete last row
+  }
+}
 function removeC() {}
 let colorSelected = "SELECT";
 function selectColor() {
