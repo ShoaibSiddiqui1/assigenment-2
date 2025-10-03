@@ -1,53 +1,72 @@
-// Declare global variables
-let numRows = 0;
-let numCols = 0;
-let colorSelected; 
+// === Grid Maker (Stories 2–5 merged cleanly) ===
 
-// Add a row
-function addR() {
-    alert("Clicked Add Row"); // Replace this line with your code.
+const grid = document.getElementById('grid');
+const btnAddRow = document.getElementById('btnAddRow');
+
+// If table is empty, start with 1 column; else match first row.
+function getColumnCount() {
+  if (!grid || grid.rows.length === 0) return 1;
+  return Math.max(1, grid.rows[0].cells.length);
 }
 
-// Add a column
+// Story 2: Add Row
+function addRow() {
+  const colCount = getColumnCount();
+  const tr = grid.insertRow();
+  for (let c = 0; c < colCount; c++) {
+    const td = tr.insertCell();
+    td.className = 'cell';
+  }
+}
+if (btnAddRow) btnAddRow.onclick = addRow;
+
+// Story 3: Add Column
 function addC() {
-    alert("Clicked Add Col"); // Replace this line with your code.
+  const table = document.getElementById('grid');
+
+  // If no rows yet, create a 1x1 grid
+  if (table.rows.length === 0) {
+    const tr = table.insertRow();
+    const td = tr.insertCell();
+    td.className = 'cell';
+    return;
+  }
+
+  // Otherwise, add one cell to every existing row
+  for (let r = 0; r < table.rows.length; r++) {
+    const td = table.rows[r].insertCell();
+    td.className = 'cell';
+  }
 }
 
-// Remove a row
+// Story 4: Remove Row
 function removeR() {
-    alert("Clicked Remove Row"); // Replace this line with your code.
+  const table = document.getElementById('grid');
+  if (table.rows.length > 0) {
+    table.deleteRow(table.rows.length - 1); // delete last row
+  }
 }
 
 // Story 5: Remove Column
 function removeC() {
   const table = document.getElementById('grid');
-  if (table.rows.length === 0) return;                // nothing to do
+  if (table.rows.length === 0) return;
 
-  const lastColIndex = table.rows[0].cells.length - 1; // index of last cell
-  if (lastColIndex < 0) return;                        // no columns to remove
+  const lastColIndex = table.rows[0].cells.length - 1;
+  if (lastColIndex < 0) return;
 
-  // remove the last cell from every row
   for (let r = 0; r < table.rows.length; r++) {
     table.rows[r].deleteCell(lastColIndex);
   }
 }
-// Set global variable for selected color
-function selectColor(){
-    colorSelected = document.getElementById("selectedColorId").value;
-    console.log(colorSelected);
-}
 
-// Fill all uncolored cells
-function fillU(){
-    alert("Clicked Fill All Uncolored"); // Replace this line with your code.
+// --- Stubs for later stories (to be implemented) ---
+let colorSelected = "SELECT";
+function selectColor() {
+  const sel = document.getElementById("selectedColorId");
+  colorSelected = sel ? sel.value : "SELECT";
 }
+function fillU() {}
+function fillAll() {}
+function clearAll() {}
 
-// Fill all cells
-function fillAll(){
-    alert("Clicked Fill All"); // Replace this line with your code.
-}
-
-// Clear all cells
-function clearAll(){
-    alert("Clicked Clear All"); // Replace this line with your code.
-}
