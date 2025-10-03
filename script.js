@@ -1,4 +1,4 @@
-// Story 2: Add Row ONLY
+// === Grid Maker — merged (Story 2 + Story 3) ===
 
 const grid = document.getElementById('grid');
 const btnAddRow = document.getElementById('btnAddRow');
@@ -9,6 +9,7 @@ function getColumnCount() {
   return Math.max(1, grid.rows[0].cells.length);
 }
 
+// Story 2: Add Row
 function addRow() {
   const colCount = getColumnCount();
   const tr = grid.insertRow();
@@ -17,15 +18,36 @@ function addRow() {
     td.className = 'cell';
   }
 }
-
-// Wire button
 if (btnAddRow) btnAddRow.onclick = addRow;
 
-// Stubs so other buttons don't error yet
-function addC() {}
+// Story 3: Add Column
+function addC() {
+  const table = document.getElementById('grid');
+
+  // If no rows yet, create a 1x1 grid
+  if (table.rows.length === 0) {
+    const tr = table.insertRow();
+    const td = tr.insertCell();
+    td.className = 'cell';
+    return;
+  }
+
+  // Otherwise, add one cell to every existing row
+  for (let r = 0; r < table.rows.length; r++) {
+    const td = table.rows[r].insertCell();
+    td.className = 'cell';
+  }
+}
+
+// --- Stubs (to be implemented in later stories) ---
 function removeR() {}
 function removeC() {}
-function selectColor() {}
+let colorSelected = "SELECT";
+function selectColor() {
+  const sel = document.getElementById("selectedColorId");
+  colorSelected = sel ? sel.value : "SELECT";
+}
 function fillU() {}
 function fillAll() {}
 function clearAll() {}
+
