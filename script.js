@@ -17,23 +17,16 @@ function getColumnCount() {
   return Math.max(1, grid.rows[0].cells.length);
 }
 
-// Create a new row and fill it with the right number of cells.
+// Story 2: Add Row
 function addRow() {
   const colCount = getColumnCount();
   const tr = grid.insertRow();
   for (let c = 0; c < colCount; c++) {
     const td = tr.insertCell();
-    td.className = 'cell'; // helpful for later stories, harmless now
+    td.className = 'cell';
   }
 }
-
-// If you have a button with id="btnAddRow"
 if (btnAddRow) btnAddRow.onclick = addRow;
-
-// If your HTML uses onclick="addR()", keep this alias
-function addR() {
-  addRow();
-}
 
 // Add a column
 function addC() {
