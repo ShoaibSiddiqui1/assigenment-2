@@ -29,9 +29,15 @@ function selectColor(){
     console.log(colorSelected);
 }
 
-// Fill all uncolored cells
-function fillU(){
-    alert("Clicked Fill All Uncolored"); // Replace this line with your code.
+// Story 8: Fill All Uncolored
+function fillU() {
+  if (!colorSelected || colorSelected === 'SELECT') return;
+  const cells = document.querySelectorAll('#grid .cell');
+  cells.forEach(td => {
+    if (!td.style.backgroundColor) {
+      td.style.backgroundColor = colorSelected;
+    }
+  });
 }
 
 // Fill all cells
