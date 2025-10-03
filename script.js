@@ -101,4 +101,3 @@ function clearAll() {
     td.style.backgroundColor = '';
   });
 }
-
