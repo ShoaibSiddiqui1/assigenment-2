@@ -1,18 +1,30 @@
-// Declare global variables
-let numRows = 0;
-let numCols = 0;
-let colorSelected; 
+// === Grid Maker — merged (Story 2 + Story 3) ===
 
-// Add a row
-function addR() {
-    alert("Clicked Add Row"); // Replace this line with your code.
+const grid = document.getElementById('grid');
+const btnAddRow = document.getElementById('btnAddRow');
+
+// If table is empty, start with 1 column; else match first row.
+function getColumnCount() {
+  if (!grid || grid.rows.length === 0) return 1;
+  return Math.max(1, grid.rows[0].cells.length);
 }
+
+// Story 2: Add Row
+function addRow() {
+  const colCount = getColumnCount();
+  const tr = grid.insertRow();
+  for (let c = 0; c < colCount; c++) {
+    const td = tr.insertCell();
+    td.className = 'cell';
+  }
+}
+if (btnAddRow) btnAddRow.onclick = addRow;
 
 // Story 3: Add Column
 function addC() {
   const table = document.getElementById('grid');
 
-  // If there are no rows yet, start a 1x1 grid
+  // If no rows yet, create a 1x1 grid
   if (table.rows.length === 0) {
     const tr = table.insertRow();
     const td = tr.insertCell();
@@ -27,33 +39,15 @@ function addC() {
   }
 }
 
-// Remove a row
-function removeR() {
-    alert("Clicked Remove Row"); // Replace this line with your code.
+// --- Stubs (to be implemented in later stories) ---
+function removeR() {}
+function removeC() {}
+let colorSelected = "SELECT";
+function selectColor() {
+  const sel = document.getElementById("selectedColorId");
+  colorSelected = sel ? sel.value : "SELECT";
 }
+function fillU() {}
+function fillAll() {}
+function clearAll() {}
 
-// Remove a column
-function removeC() {
-    alert("Clicked Remove Col"); // Replace this line with your code.
-}
-
-// Set global variable for selected color
-function selectColor(){
-    colorSelected = document.getElementById("selectedColorId").value;
-    console.log(colorSelected);
-}
-
-// Fill all uncolored cells
-function fillU(){
-    alert("Clicked Fill All Uncolored"); // Replace this line with your code.
-}
-
-// Fill all cells
-function fillAll(){
-    alert("Clicked Fill All"); // Replace this line with your code.
-}
-
-// Clear all cells
-function clearAll(){
-    alert("Clicked Clear All"); // Replace this line with your code.
-}
