@@ -1,4 +1,4 @@
-// === Grid Maker (Stories 2–9 merged cleanly) ===
+// === Grid Maker (Stories 2–10 merged cleanly) ===
 
 const grid = document.getElementById('grid');
 const btnAddRow = document.getElementById('btnAddRow');
@@ -94,6 +94,11 @@ function fillAll() {
   });
 }
 
-// Story 10 stub (we'll implement next)
-function clearAll() {}
+// Story 10: Clear All
+function clearAll() {
+  const cells = document.querySelectorAll('#grid .cell');
+  cells.forEach(td => {
+    td.style.backgroundColor = '';
+  });
+}
 
