@@ -18,11 +18,19 @@ function removeR() {
     alert("Clicked Remove Row"); // Replace this line with your code.
 }
 
-// Remove a column
+// Story 5: Remove Column
 function removeC() {
-    alert("Clicked Remove Col"); // Replace this line with your code.
-}
+  const table = document.getElementById('grid');
+  if (table.rows.length === 0) return;                // nothing to do
 
+  const lastColIndex = table.rows[0].cells.length - 1; // index of last cell
+  if (lastColIndex < 0) return;                        // no columns to remove
+
+  // remove the last cell from every row
+  for (let r = 0; r < table.rows.length; r++) {
+    table.rows[r].deleteCell(lastColIndex);
+  }
+}
 // Set global variable for selected color
 function selectColor(){
     colorSelected = document.getElementById("selectedColorId").value;
