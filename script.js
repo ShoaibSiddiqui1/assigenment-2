@@ -8,9 +8,23 @@ function addR() {
     alert("Clicked Add Row"); // Replace this line with your code.
 }
 
-// Add a column
+// Story 3: Add Column
 function addC() {
-    alert("Clicked Add Col"); // Replace this line with your code.
+  const table = document.getElementById('grid');
+
+  // If there are no rows yet, start a 1x1 grid
+  if (table.rows.length === 0) {
+    const tr = table.insertRow();
+    const td = tr.insertCell();
+    td.className = 'cell';
+    return;
+  }
+
+  // Otherwise, add one cell to every existing row
+  for (let r = 0; r < table.rows.length; r++) {
+    const td = table.rows[r].insertCell();
+    td.className = 'cell';
+  }
 }
 
 // Remove a row
