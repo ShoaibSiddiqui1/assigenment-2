@@ -39,7 +39,10 @@ function fillAll(){
     alert("Clicked Fill All"); // Replace this line with your code.
 }
 
-// Clear all cells
-function clearAll(){
-    alert("Clicked Clear All"); // Replace this line with your code.
+// Story 10: Clear All
+function clearAll() {
+  const cells = document.querySelectorAll('#grid .cell');
+  cells.forEach(td => {
+    td.style.backgroundColor = '';
+  });
 }
