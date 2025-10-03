@@ -1,37 +1,88 @@
-// Declare global variables
-let numRows = 0;
-let numCols = 0;
-let colorSelected; 
+// === Grid Maker (Stories 2–9 merged cleanly) ===
 
-// Add a row
-function addR() {
-    alert("Clicked Add Row"); // Replace this line with your code.
+const grid = document.getElementById('grid');
+const btnAddRow = document.getElementById('btnAddRow');
+
+// If table is empty, start with 1 column; else match first row.
+function getColumnCount() {
+  if (!grid || grid.rows.length === 0) return 1;
+  return Math.max(1, grid.rows[0].cells.length);
 }
 
-// Add a column
+// Story 2: Add Row
+function addRow() {
+  const colCount = getColumnCount();
+  const tr = grid.insertRow();
+  for (let c = 0; c < colCount; c++) {
+    const td = tr.insertCell();
+    td.className = 'cell';
+  }
+}
+if (btnAddRow) btnAddRow.onclick = addRow;
+
+// Story 3: Add Column
 function addC() {
-    alert("Clicked Add Col"); // Replace this line with your code.
+  const table = document.getElementById('grid');
+
+  // If no rows yet, create a 1x1 grid
+  if (table.rows.length === 0) {
+    const tr = table.insertRow();
+    const td = tr.insertCell();
+    td.className = 'cell';
+    return;
+  }
+
+  // Otherwise, add one cell to every existing row
+  for (let r = 0; r < table.rows.length; r++) {
+    const td = table.rows[r].insertCell();
+    td.className = 'cell';
+  }
 }
 
-// Remove a row
+// Story 4: Remove Row
 function removeR() {
-    alert("Clicked Remove Row"); // Replace this line with your code.
+  const table = document.getElementById('grid');
+  if (table.rows.length > 0) {
+    table.deleteRow(table.rows.length - 1);
+  }
 }
 
-// Remove a column
+// Story 5: Remove Column
 function removeC() {
-    alert("Clicked Remove Col"); // Replace this line with your code.
+  const table = document.getElementById('grid');
+  if (table.rows.length === 0) return;
+
+  const lastColIndex = table.rows[0].cells.length - 1;
+  if (lastColIndex < 0) return;
+
+  for (let r = 0; r < table.rows.length; r++) {
+    table.rows[r].deleteCell(lastColIndex);
+  }
 }
 
-// Set global variable for selected color
-function selectColor(){
-    colorSelected = document.getElementById("selectedColorId").value;
-    console.log(colorSelected);
+// Story 6: Select Color
+let colorSelected = "SELECT";
+function selectColor() {
+  const sel = document.getElementById("selectedColorId");
+  colorSelected = sel ? sel.value : "SELECT";
 }
 
-// Fill all uncolored cells
-function fillU(){
-    alert("Clicked Fill All Uncolored"); // Replace this line with your code.
+// Story 7: Click cell to color
+document.getElementById('grid').addEventListener('click', function (e) {
+  if (e.target && e.target.tagName === 'TD' && colorSelected && colorSelected !== 'SELECT') {
+    e.target.style.backgroundColor = colorSelected;
+  }
+});
+
+// Story 8: Fill All Uncolored
+function fillU() {
+  if (!colorSelected || colorSelected === 'SELECT') return;
+  const cells = document.querySelectorAll('#grid .cell');
+  cells.forEach(td => {
+    if (!td.style.backgroundColor) {
+      td.style.backgroundColor = colorSelected;
+    }
+  });
 }
 
 // Story 9: Fill All
@@ -43,8 +94,6 @@ function fillAll() {
   });
 }
 
+// Story 10 stub (we'll implement next)
+function clearAll() {}
 
-// Clear all cells
-function clearAll(){
-    alert("Clicked Clear All"); // Replace this line with your code.
-}
