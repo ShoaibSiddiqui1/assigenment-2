@@ -1,4 +1,4 @@
-// === Grid Maker (Stories 2–7 merged cleanly) ===
+// === Grid Maker (Stories 2–8 merged cleanly) ===
 
 const grid = document.getElementById('grid');
 const btnAddRow = document.getElementById('btnAddRow');
@@ -74,8 +74,17 @@ document.getElementById('grid').addEventListener('click', function (e) {
   }
 });
 
-// Stubs for later stories
-function fillU() {}
+// Story 8: Fill All Uncolored
+function fillU() {
+  if (!colorSelected || colorSelected === 'SELECT') return;
+  const cells = document.querySelectorAll('#grid .cell');
+  cells.forEach(td => {
+    if (!td.style.backgroundColor) {
+      td.style.backgroundColor = colorSelected;
+    }
+  });
+}
+
+// Stubs for remaining stories (to implement next)
 function fillAll() {}
 function clearAll() {}
-
