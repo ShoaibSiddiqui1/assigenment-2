@@ -1,4 +1,4 @@
-// === Grid Maker (Stories 2–5 + Select Color merged) ===
+// === Grid Maker (Stories 2–7 merged cleanly) ===
 
 const grid = document.getElementById('grid');
 const btnAddRow = document.getElementById('btnAddRow');
@@ -43,7 +43,7 @@ function addC() {
 function removeR() {
   const table = document.getElementById('grid');
   if (table.rows.length > 0) {
-    table.deleteRow(table.rows.length - 1); // delete last row
+    table.deleteRow(table.rows.length - 1);
   }
 }
 
@@ -66,6 +66,13 @@ function selectColor() {
   const sel = document.getElementById("selectedColorId");
   colorSelected = sel ? sel.value : "SELECT";
 }
+
+// Story 7: Click cell to color
+document.getElementById('grid').addEventListener('click', function (e) {
+  if (e.target && e.target.tagName === 'TD' && colorSelected && colorSelected !== 'SELECT') {
+    e.target.style.backgroundColor = colorSelected;
+  }
+});
 
 // Stubs for later stories
 function fillU() {}
