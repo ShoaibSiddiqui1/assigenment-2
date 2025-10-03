@@ -43,3 +43,9 @@ function fillAll(){
 function clearAll(){
     alert("Clicked Clear All"); // Replace this line with your code.
 }
+
+document.getElementById('grid').addEventListener('click', function (e) {
+  if (e.target && e.target.tagName === 'TD' && colorSelected && colorSelected !== 'SELECT') {
+    e.target.style.backgroundColor = colorSelected;
+  }
+});
