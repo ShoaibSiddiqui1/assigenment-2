@@ -1,4 +1,4 @@
-// === Grid Maker (Stories 2–5 merged cleanly) ===
+// === Grid Maker (Stories 2–5 + Select Color merged) ===
 
 const grid = document.getElementById('grid');
 const btnAddRow = document.getElementById('btnAddRow');
@@ -60,12 +60,14 @@ function removeC() {
   }
 }
 
-// --- Stubs for later stories (to be implemented) ---
+// Story 6: Select Color
 let colorSelected = "SELECT";
 function selectColor() {
   const sel = document.getElementById("selectedColorId");
   colorSelected = sel ? sel.value : "SELECT";
 }
+
+// Stubs for later stories
 function fillU() {}
 function fillAll() {}
 function clearAll() {}
