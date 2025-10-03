@@ -24,9 +24,10 @@ function removeC() {
 }
 
 // Set global variable for selected color
-function selectColor(){
-    colorSelected = document.getElementById("selectedColorId").value;
-    console.log(colorSelected);
+let colorSelected = "SELECT";
+function selectColor() {
+  const sel = document.getElementById("selectedColorId");
+  colorSelected = sel ? sel.value : "SELECT";
 }
 
 // Fill all uncolored cells
