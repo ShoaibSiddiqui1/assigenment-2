@@ -1,4 +1,4 @@
-// === Grid Maker — merged (Story 2 + Story 3) ===
+// === Grid Maker (Stories 2–5 merged cleanly) ===
 
 const grid = document.getElementById('grid');
 const btnAddRow = document.getElementById('btnAddRow');
@@ -39,7 +39,6 @@ function addC() {
   }
 }
 
-// --- Stubs (to be implemented in later stories) ---
 // Story 4: Remove Row
 function removeR() {
   const table = document.getElementById('grid');
@@ -47,7 +46,21 @@ function removeR() {
     table.deleteRow(table.rows.length - 1); // delete last row
   }
 }
-function removeC() {}
+
+// Story 5: Remove Column
+function removeC() {
+  const table = document.getElementById('grid');
+  if (table.rows.length === 0) return;
+
+  const lastColIndex = table.rows[0].cells.length - 1;
+  if (lastColIndex < 0) return;
+
+  for (let r = 0; r < table.rows.length; r++) {
+    table.rows[r].deleteCell(lastColIndex);
+  }
+}
+
+// --- Stubs for later stories (to be implemented) ---
 let colorSelected = "SELECT";
 function selectColor() {
   const sel = document.getElementById("selectedColorId");
