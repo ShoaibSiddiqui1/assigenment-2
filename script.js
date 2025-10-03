@@ -34,10 +34,15 @@ function fillU(){
     alert("Clicked Fill All Uncolored"); // Replace this line with your code.
 }
 
-// Fill all cells
-function fillAll(){
-    alert("Clicked Fill All"); // Replace this line with your code.
+// Story 9: Fill All
+function fillAll() {
+  if (!colorSelected || colorSelected === 'SELECT') return;
+  const cells = document.querySelectorAll('#grid .cell');
+  cells.forEach(td => {
+    td.style.backgroundColor = colorSelected;
+  });
 }
+
 
 // Clear all cells
 function clearAll(){
